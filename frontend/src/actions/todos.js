@@ -24,10 +24,10 @@ export const todosRequest = () => (dispatch, getState) => {
                 payload: response.data
             });
         })
-        .catch(() => {
+        .catch((err) => {
             dispatch({
                 type: TODOS_NOT_LOADED,
-                payload: ["Todos not loaded"]
+                payload: Object.values(err.response.data)
             });
         });
 };
@@ -46,10 +46,10 @@ export const createRequest = (text) => (dispatch, getState) => {
                 payload: response.data
             });
         })
-        .catch(() => {
+        .catch((err) => {
             dispatch({
                 type: CREATE_ERROR,
-                payload: ["Cannot create new todo"]
+                payload: Object.values(err.response.data)
             });
         });
 };
@@ -71,7 +71,7 @@ export const setDoneRequest = (id, value) => (dispatch, getState) => {
         .catch((err) => {
             dispatch({
                 type: SET_DONE_ERROR,
-                payload: ["Cannot set done"]
+                payload: Object.values(err.response.data)
             });
         });
 };
@@ -84,7 +84,7 @@ export const deleteRequest = (id) => (dispatch, getState) => {
             Authorization: 'Token ' + getState().account.token
         }
     })
-        .then((response) => {
+        .then(() => {
             dispatch({
                 type: DELETE_SUCCESS,
                 payload: id
@@ -93,7 +93,7 @@ export const deleteRequest = (id) => (dispatch, getState) => {
         .catch((err) => {
             dispatch({
                 type: DELETE_ERROR,
-                payload: ["Cannot delete todo"]
+                payload: Object.values(err.response.data)
             });
         });
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Textarea, Button} from 'react-materialize'
+import ErrorList from "./ErrorList";
 
 const CreateTodo = (props) => {
     const [text, setText] = useState('');
@@ -18,6 +19,7 @@ const CreateTodo = (props) => {
                 label="Write something here..."
                 onChange={(e) => setText(e.target.value)}
             />
+            <ErrorList errors={props.errors} />
             <Button onClick={onSubmit} small>
                 Add
             </Button>

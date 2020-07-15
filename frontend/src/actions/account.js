@@ -23,10 +23,10 @@ export const userRequest = () => (dispatch, getState) => {
                 payload: response.data
             });
         })
-        .catch(() => {
+        .catch((err) => {
             dispatch({
                 type: USER_NOT_LOADED,
-                payload: ["User not loaded"]
+                payload: Object.values(err.response.data)
             });
         });
 };
@@ -44,10 +44,10 @@ export const loginRequest = (username, password) => dispatch =>
                 payload: response.data
             });
         })
-        .catch(() => {
+        .catch((err) => {
             dispatch({
                 type: LOGIN_ERROR,
-                payload: ["Login error"]
+                payload: Object.values(err.response.data)
             });
         });
 
@@ -71,10 +71,10 @@ export const registerRequest = (username, password, password2) => dispatch => {
                 payload: response.data
             });
         })
-        .catch(() => {
+        .catch((err) => {
             dispatch({
                 type: REGISTER_ERROR,
-                payload: ["Register error"]
+                payload: Object.values(err.response.data)
             });
         });
     };
@@ -87,15 +87,15 @@ export const logoutRequest = () => (dispatch, getState) => {
             Authorization: 'Token ' + getState().account.token
         }
     })
-        .then((response) => {
+        .then(() => {
             dispatch({
                 type: LOGOUT_SUCCESS,
             });
         })
-        .catch(() => {
+        .catch((err) => {
             dispatch({
                 type: LOGOUT_ERROR,
-                payload: ["Logout error"]
+                payload: Object.values(err.response.data)
             });
         });
 };

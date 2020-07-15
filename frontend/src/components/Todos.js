@@ -16,7 +16,10 @@ const Todos = (props) => {
             {props.account.isAuth
                 ?
                 <>
-                    <CreateTodo createRequest={props.createRequest}/>
+                    <CreateTodo
+                        createRequest={props.createRequest}
+                        errors={props.errors}
+                    />
                     <UserTodos
                         todos={props.todos}
                         setDoneRequest={props.setDoneRequest}
@@ -32,6 +35,7 @@ const Todos = (props) => {
 
 const mapStateToProps = state => ({
     todos: state.todos.todos,
+    errors: state.todos.errors,
     account: state.account
 });
 

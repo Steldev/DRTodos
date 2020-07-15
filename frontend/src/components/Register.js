@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {TextInput, Button} from 'react-materialize'
 import {registerRequest} from "../actions/account"
 import { Redirect } from "react-router-dom"
+import ErrorList from "./ErrorList";
 
 const Register = (props) => {
     if (props.isAuth) {
@@ -42,6 +43,7 @@ const Register = (props) => {
             password
             onChange={(e) => setPassword2(e.target.value)}
         />
+        <ErrorList errors={props.errors} />
         <Button
             style={{float: "right"}}
         >
@@ -51,7 +53,8 @@ const Register = (props) => {
 };
 
 const mapStateToProps = state => ({
-    isAuth: state.account.isAuth
+    isAuth: state.account.isAuth,
+    errors: state.account.errors
 });
 
 export default connect(mapStateToProps, {registerRequest})(Register);
