@@ -1,0 +1,19 @@
+// Account types
+export const USER_LOADED = "USER_LOADED";
+export const USER_NOT_LOADED = "USER_NOT_LOADED";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_ERROR = "REGISTER_ERROR";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_ERROR = "LOGOUT_ERROR";
+
+// Todos types
+export const TODOS_LOADED = "TODOS_LOADED";
+export const TODOS_NOT_LOADED = "TODOS_NOT_LOADED";
+export const CREATE_SUCCESS = "CREATE_SUCCESS";
+export const CREATE_ERROR = "CREATE_ERROR";
+export const DELETE_SUCCESS = "DELETE_SUCCESS";
+export const DELETE_ERROR = "DELETE_ERROR";
+export const SET_DONE_SUCCESS = "SET_DONE_SUCCESS";
+export const SET_DONE_ERROR = "SET_DONE_ERROR";
